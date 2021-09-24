@@ -21,7 +21,7 @@ public class CannonControl : MonoBehaviour
     private void Start()
     {
         numberOfStickman = stickmanPool.transform.childCount;
-        InvokeRepeating("LaunchStickman", 1f, 0.5f);
+        InvokeRepeating("LaunchStickman", 0.7f, 0.5f);
     }
 
     private void Update()
