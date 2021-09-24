@@ -7,18 +7,30 @@ public class CannonControl : MonoBehaviour
 
     [SerializeField] private float maxSwerveAmount = 0.3f;   // to limit the canon movement speed; 
     [SerializeField] private float limits = 3f; // right and left limits of our platform
-    [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis
+    [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis    
     private float lastFrameFingerPosition;
     private float deltaMovement;  // movement amount in X axis
     private bool onClick=false;  // control screen touch
 
+    
+    public GameObject stickmanPool; // object pool 
+    GameObject stickman; // 
+    int index = 0;  // index of stickman in the pool
+    int numberOfStickman = 0; // number of stick man int the pool
+
+    private void Start()
+    {
+        numberOfStickman = stickmanPool.transform.childCount;
+        InvokeRepeating("LaunchStickman", 1f, 0.5f);
+    }
 
     private void Update()
     {
         CalculateSwerveAmount();
+
         if (onClick)
         {
-            MoveCannon();
+            MoveCannon();            
         }
     }
 
@@ -33,7 +45,7 @@ public class CannonControl : MonoBehaviour
 
         else if (Input.GetMouseButton(0))
         {
-            deltaMovement = lastFrameFingerPosition- Input.mousePosition.x;
+            deltaMovement = Input.mousePosition.x - lastFrameFingerPosition;
             lastFrameFingerPosition = Input.mousePosition.x;
         }
 
@@ -66,9 +78,24 @@ public class CannonControl : MonoBehaviour
         else
         {
             transform.Translate(deltaPos);
-        }       
-
+        }  
 
     }
 
+    // creating stickman in front of the cannon , onclick condition for controling touches.
+    // IMPORTANT: number of Stickman in the pool is constant, not dynamic. We can't exceed it for now. We can fix it later. 
+    void LaunchStickman()   
+    {
+        if (onClick)
+        {
+            stickman = stickmanPool.transform.GetChild(index).gameObject;
+            stickman.transform.position = new Vector3(transform.position.x, 0.5f , transform.position.z +0.5f);
+            stickman.SetActive(true);
+            index++;
+            if (index > numberOfStickman)
+            {
+                index = 0;
+            }
+        }    
+    }
 }
