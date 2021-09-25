@@ -89,7 +89,7 @@ public class CannonControl : MonoBehaviour
         if (onClick)
         {
             stickman = stickmanPool.transform.GetChild(index).gameObject;
-            stickman.transform.position = new Vector3(transform.position.x, 0.5f , transform.position.z +0.5f);
+            stickman.transform.position = new Vector3(transform.position.x, 0.6f , transform.position.z +0.5f);
             stickman.SetActive(true);
             index++;
             if (index > numberOfStickman)
