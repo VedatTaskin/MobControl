@@ -8,8 +8,8 @@ using DG.Tweening;
 public class StickmanControl : MonoBehaviour
 {
 
-    [SerializeField] private float launchAmount = 1f;
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float launchAmount;
+    [SerializeField] private float speed;
     Rigidbody rb;
 
 
