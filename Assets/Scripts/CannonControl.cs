@@ -8,10 +8,14 @@ public class CannonControl : MonoBehaviour
 
     [SerializeField] private float maxSwerveAmount = 0.3f;   // to limit the canon movement speed; 
     [SerializeField] private float limits = 3f; // right and left limits of our platform
-    [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis    
+    [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis
+    [SerializeField] int bigManComingAmount = 10;   //  how many stickmans to throw and the big man will come out
+
+                                                    
     private float lastFrameFingerPosition;
     private float deltaMovement;  // movement amount in X axis
-    private bool onClick=false;  // control screen touch
+    private bool onClick = false;  // control screen touch
+    private bool waitForReleaseBigMan = false;
     [HideInInspector] public bool firstTouch = false;
 
     //To control the first touch of player
@@ -20,8 +24,9 @@ public class CannonControl : MonoBehaviour
     public GameObject stickmanPool; // object pool
     private GameObject stickman;
     
-    int index = 0;  // index of stickman in the pool
+    int indexOfStickman = 0;  // index of stickman in the pool
     int numberOfStickman = 0; // number of stick man int the pool
+    int stickmanCounterForBigMan = 0; // stickman counter for the big man
 
     private void Start()
     {
@@ -37,6 +42,7 @@ public class CannonControl : MonoBehaviour
         {
             MoveCannon();            
         }
+
     }
 
 
@@ -95,13 +101,13 @@ public class CannonControl : MonoBehaviour
         // creating stickman in front of the cannon , onclick condition for controling touches.
         if (onClick)
         {
-            stickman = stickmanPool.transform.GetChild(index).gameObject;
+            stickman = stickmanPool.transform.GetChild(indexOfStickman).gameObject;
             stickman.transform.position = new Vector3(transform.position.x, 0.6f , transform.position.z +0.5f);
             stickman.SetActive(true);
-            index++;
-            if (index > numberOfStickman)
+            indexOfStickman++;
+            if (indexOfStickman > numberOfStickman)
             {
-                index = 0;
+                indexOfStickman = 0;
             }
 
             if (!firstTouch)
@@ -109,6 +115,54 @@ public class CannonControl : MonoBehaviour
                 firstTouch = true;
                 onFirstTouch?.Invoke(firstTouch);
             }
-        }    
+
+            SliderControl();
+        }        
     }
+
+    
+    // Cannon slider control part. To launch Big Man some control ise doing here
+    void SliderControl()
+    {
+        stickmanCounterForBigMan++;
+
+        int value = stickmanCounterForBigMan % bigManComingAmount;
+
+
+        if (value == 0)
+        {
+            waitForReleaseBigMan = true;
+            StartCoroutine("LaunchBigMan");
+            UIController.Instance.SetCannonSlider(1);
+        }
+
+        if (!waitForReleaseBigMan)
+        {
+            float sliderValue = (float) value / bigManComingAmount;
+            UIController.Instance.SetCannonSlider(sliderValue);
+            print(sliderValue);
+        }
+
+    }
+
+
+    //To launch a big man, waiting until player release finger
+    IEnumerator LaunchBigMan()
+    {
+        yield return new WaitUntil(() => onClick == false);
+        print("big man launched");
+        waitForReleaseBigMan = false;
+        stickmanCounterForBigMan = 0;
+        UIController.Instance.SetCannonSlider(0);
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            UIController.Instance.LoseMenu();
+        }
+    }
+
 }

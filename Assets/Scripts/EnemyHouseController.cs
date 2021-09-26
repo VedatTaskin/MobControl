@@ -17,6 +17,7 @@ public class EnemyHouseController : MonoBehaviour
     int index = 0;  // index of stickman in the pool
     [SerializeField] private float enemyLaunchStartTime = 1f;
     [SerializeField] private float enemySpawnRepeatRate = 1f;
+    [SerializeField] private int enemyHouseHealth = 20;
     
     public GameObject enemyPool; // object pool
     private GameObject enemy;
@@ -35,7 +36,8 @@ public class EnemyHouseController : MonoBehaviour
 
     private void Start()
     {        
-        numberOfEnemy = enemyPool.transform.childCount;   
+        numberOfEnemy = enemyPool.transform.childCount;
+        UIController.Instance.SetEnemyHouseHealth(enemyHouseHealth);
     }
 
     // checking if a player hits the house
@@ -45,7 +47,8 @@ public class EnemyHouseController : MonoBehaviour
         {
             shake = false;
             StartCoroutine("Shake");
-            other.gameObject.SetActive(false);
+            StickmanCrashed(other.gameObject);
+            SetHouseHealth();
         }
     }
 
@@ -78,6 +81,29 @@ public class EnemyHouseController : MonoBehaviour
             enemy.SetActive(true);
             index++;
         }        
+    }
+
+    void StickmanCrashed(GameObject other)
+    {
+        other.gameObject.SetActive(false);        
+    }
+
+    void SetHouseHealth()
+    {
+        enemyHouseHealth--;
+        
+        UIController.Instance.SetEnemyHouseHealth(enemyHouseHealth);
+
+        if (enemyHouseHealth <=0)
+        {
+            YouWon();
+        }
+    }
+
+    void YouWon()
+    {
+        UIController.Instance.WinMenu();
+        transform.gameObject.SetActive(false);
     }
 }
 
