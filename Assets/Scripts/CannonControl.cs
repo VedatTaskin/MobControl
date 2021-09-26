@@ -140,7 +140,7 @@ public class CannonControl : MonoBehaviour
         {
             float sliderValue = (float) value / bigManComingAmount;
             UIController.Instance.SetCannonSlider(sliderValue);
-            print(sliderValue);
+            //print(sliderValue);
         }
 
     }

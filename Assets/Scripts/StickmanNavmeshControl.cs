@@ -12,9 +12,13 @@ public class StickmanNavmeshControl : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        navMeshAgent.enabled = true;
+        navMeshAgent.enabled = true;        
         target = GameObject.FindGameObjectWithTag("EnemyHouse");
-        navMeshAgent.SetDestination(target.transform.position);
+        if (target != null)
+        {
+            navMeshAgent.SetDestination(target.transform.position);
+        }
+        
     }
 
 

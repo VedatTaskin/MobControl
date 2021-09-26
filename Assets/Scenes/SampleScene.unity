@@ -2160,8 +2160,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfEnemy: 10
   enemyLaunchStartTime: 1
-  enemySpawnRepeatRate: 1
-  enemyHouseHealth: 10
+  enemySpawnRepeatRate: 0.5
+  enemyHouseHealth: 20
   enemyPool: {fileID: 720997986}
 --- !u!1 &661360582
 GameObject:
