@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CannonControl : MonoBehaviour
 {
@@ -11,10 +12,14 @@ public class CannonControl : MonoBehaviour
     private float lastFrameFingerPosition;
     private float deltaMovement;  // movement amount in X axis
     private bool onClick=false;  // control screen touch
+    [HideInInspector] public bool firstTouch = false;
 
+    //To control the first touch of player
+    public static event Action<bool> onFirstTouch;
     
-    public GameObject stickmanPool; // object pool 
-    GameObject stickman; // 
+    public GameObject stickmanPool; // object pool
+    private GameObject stickman;
+    
     int index = 0;  // index of stickman in the pool
     int numberOfStickman = 0; // number of stick man int the pool
 
@@ -33,6 +38,7 @@ public class CannonControl : MonoBehaviour
             MoveCannon();            
         }
     }
+
 
     // Checking if the player touchs the screen & calculate swerve amount
     void CalculateSwerveAmount()
@@ -82,10 +88,11 @@ public class CannonControl : MonoBehaviour
 
     }
 
-    // creating stickman in front of the cannon , onclick condition for controling touches.
+    
     // IMPORTANT: number of Stickman in the pool is constant, not dynamic. We can't exceed it for now. We can fix it later. 
     void LaunchStickman()   
     {
+        // creating stickman in front of the cannon , onclick condition for controling touches.
         if (onClick)
         {
             stickman = stickmanPool.transform.GetChild(index).gameObject;
@@ -95,6 +102,12 @@ public class CannonControl : MonoBehaviour
             if (index > numberOfStickman)
             {
                 index = 0;
+            }
+
+            if (!firstTouch)
+            {
+                firstTouch = true;
+                onFirstTouch?.Invoke(firstTouch);
             }
         }    
     }

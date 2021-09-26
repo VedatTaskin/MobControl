@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Stickman
   - EnemyHouse
+  - Cannon
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,7 @@ public class StickmanControl : MonoBehaviour
     [SerializeField] private float launchAmount;
     [SerializeField] private float speed;
     Rigidbody rb;
-
+    
 
     private void Awake()
     {

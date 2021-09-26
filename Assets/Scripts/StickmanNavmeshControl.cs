@@ -8,7 +8,6 @@ public class StickmanNavmeshControl : MonoBehaviour
     GameObject target; 
     NavMeshAgent navMeshAgent;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,4 +16,6 @@ public class StickmanNavmeshControl : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("EnemyHouse");
         navMeshAgent.SetDestination(target.transform.position);
     }
+
+
 }
