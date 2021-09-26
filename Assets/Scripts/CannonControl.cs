@@ -133,7 +133,7 @@ public class CannonControl : MonoBehaviour
         {
             waitForReleaseBigMan = true;
             StartCoroutine("LaunchBigMan");
-            UIController.Instance.SetCannonSlider(1);
+            UIController.Instance.SetCannonSlider(1);            
         }
 
         if (!waitForReleaseBigMan)

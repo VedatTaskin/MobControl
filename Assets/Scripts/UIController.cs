@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class UIController : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class UIController : MonoBehaviour
 
     [Header("GamePlay")]
     [SerializeField] GameObject gamePlayMenu;
+    [SerializeField] GameObject releaseWarning;
     [SerializeField] Slider slider;
     [SerializeField] Image fill;
     [SerializeField] TextMeshProUGUI scoreText;
@@ -30,19 +32,16 @@ public class UIController : MonoBehaviour
             instance = this;
     }
 
-
     public void SetScore()
     {
         score++;
         scoreText.text = score.ToString();        
     }
 
-
     public void SetEnemyHouseHealth(int enemyHouseHealth)
     {
         enemyHouseHealthText.text = enemyHouseHealth.ToString();
     }
-
 
     public void SetCannonSlider(float value)
     {
@@ -51,10 +50,12 @@ public class UIController : MonoBehaviour
         if (value == 1)
         {
             fill.color = Color.yellow;
+            ShowReleaseText(true);
         }
         else 
         {
             fill.color = Color.blue;
+            ShowReleaseText(false);
         }
     }
 
@@ -70,8 +71,17 @@ public class UIController : MonoBehaviour
         loseMenu.SetActive(true);
     }
 
-    public void ShowReleaseText()
+    public void ShowReleaseText(bool release)
     {
-
+        if (release)
+        {
+            releaseWarning.SetActive(true);
+            releaseWarning.transform.DOScale(Vector3.one * 1.2f, 1);
+        }
+        if (!release)
+        {
+            releaseWarning.SetActive(false);
+            releaseWarning.transform.DOScale(Vector3.one * 0.2f, 0.1f);
+        }
     }
 }
