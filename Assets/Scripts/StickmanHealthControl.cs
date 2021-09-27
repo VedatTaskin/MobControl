@@ -10,7 +10,7 @@ public class StickmanHealthControl : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            UIController.Instance.SetScore();
+            UIController.Instance.SetLevelScore();
             collision.gameObject.SetActive(false);
             health--;
 

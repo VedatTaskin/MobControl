@@ -10,7 +10,9 @@ public class UIController : MonoBehaviour
     private static UIController instance;
     public static UIController Instance { get => instance; set => instance = value; }
 
-    private int score = 0;
+    private int levelScore=0;
+    private int totalScore;
+
 
     [Header("GamePlay")]
     [SerializeField] GameObject gamePlayMenu;
@@ -18,17 +20,20 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject releaseWarning;
     [SerializeField] Slider slider;
     [SerializeField] Image fill;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI gamePlayScoreText;
+    [SerializeField] TextMeshProUGUI gamePlayLevelText;
     [SerializeField] TextMeshProUGUI enemyHouseHealthText;
 
     [Header("WinMenu")]
     [SerializeField] GameObject winMenu;
+    [SerializeField] TextMeshProUGUI winMenuScoreText;
 
     [Header("LoseMenu")]
     [SerializeField] GameObject loseMenu;
+    [SerializeField] TextMeshProUGUI loseMenuScoreText;
 
 
-    //first tap of the player observing
+    //first tap of the player is observing
     private void OnEnable()
     {
         CannonControl.onFirstTouch += GameStarted;
@@ -43,12 +48,19 @@ public class UIController : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+
+        gamePlayMenu.SetActive(true);
+        winMenu.SetActive(false);
+        loseMenu.SetActive(false);
+        touchWarning.gameObject.SetActive(true);
+        totalScore = PlayerPrefs.GetInt("Score");  // taking score info
+        gamePlayScoreText.text = levelScore.ToString();
     }
 
-    public void SetScore()
+    public void SetLevelScore()
     {
-        score++;
-        scoreText.text = score.ToString();        
+        levelScore++;
+        gamePlayScoreText.text = levelScore.ToString();        
     }
 
     public void SetEnemyHouseHealth(int enemyHouseHealth)
@@ -76,12 +88,16 @@ public class UIController : MonoBehaviour
     {
         gamePlayMenu.SetActive(false);
         winMenu.SetActive(true);
+        totalScore += levelScore;
+        winMenuScoreText.text = totalScore.ToString();
+        PlayerPrefs.SetInt("Score", totalScore); // saving score info
     }
 
     public void LoseMenu()
     {
         gamePlayMenu.SetActive(false);
         loseMenu.SetActive(true);
+        loseMenuScoreText.text = totalScore.ToString();
     }
 
     public void ShowReleaseText(bool release)
@@ -100,6 +116,12 @@ public class UIController : MonoBehaviour
 
     void GameStarted(bool isGameStarted)
     {
-        touchWarning.gameObject.SetActive(false);
+        touchWarning.gameObject.SetActive(false);        
+    }
+
+    public void SetLevelText(int currentLevel)
+    {
+        currentLevel++;
+        gamePlayLevelText.text = currentLevel.ToString();
     }
 }
