@@ -7,8 +7,6 @@ using DG.Tweening;
 [RequireComponent(typeof(Rigidbody))]
 public class StickmanControl : MonoBehaviour
 {
-
-    [SerializeField] private float launchAmount;
     [SerializeField] private float speed;
     Rigidbody rb;
     
@@ -21,13 +19,9 @@ public class StickmanControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.DOMoveZ(transform.forward.z * launchAmount, 1f).OnComplete(AddVelocity);        
+        rb.AddForce(Vector3.forward * speed);      
     }
 
-    void AddVelocity()
-    {
-        rb.velocity = new Vector3(0, 0, speed);
-    }
 
 
 }

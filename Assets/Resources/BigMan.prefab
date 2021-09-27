@@ -513,8 +513,8 @@ GameObject:
   - component: {fileID: 1635970805753448290}
   - component: {fileID: 1511829202}
   m_Layer: 0
-  m_Name: Stickman
-  m_TagString: Stickman
+  m_Name: BigMan
+  m_TagString: BigMan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,7 +528,7 @@ Transform:
   m_GameObject: {fileID: 3458750781749123088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 2651708150207137187}
   - {fileID: 9077174037213627457}
@@ -594,7 +594,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.2
+  m_Speed: 1.1
   m_Acceleration: 3
   avoidancePriority: 50
   m_AngularSpeed: 360
@@ -618,7 +618,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b762cc06a280840af66f5bde373b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  launchAmount: 2
+  speed: 1
 --- !u!114 &1635970805753448290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1376,7 +1377,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 663834164c6a04740aaa1b778249ce7e, type: 2}
+  - {fileID: 2100002, guid: 0b021b01c75d442d7b75b546e9dafeef, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

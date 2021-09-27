@@ -8,6 +8,7 @@ TagManager:
   - EnemyHouse
   - Cannon
   - Enemy
+  - BigMan
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class CannonControl : MonoBehaviour
     [SerializeField] private float maxSwerveAmount = 0.3f;   // to limit the canon movement speed; 
     [SerializeField] private float limits = 3f; // right and left limits of our platform
     [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis
+    [SerializeField] private float stickmanLaunchInterval = 0.5f; 
     [SerializeField] int bigManComingAmount = 10;   //  how many stickmans to throw and the big man will come out
 
                                                     
@@ -31,7 +32,7 @@ public class CannonControl : MonoBehaviour
     private void Start()
     {
         numberOfStickman = stickmanPool.transform.childCount;
-        InvokeRepeating("LaunchStickman", 0.5f, 0.5f);
+        InvokeRepeating("LaunchStickman", 0.5f, stickmanLaunchInterval);
     }
 
     private void Update()
