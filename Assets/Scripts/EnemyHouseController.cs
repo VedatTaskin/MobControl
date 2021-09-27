@@ -13,7 +13,8 @@ public class EnemyHouseController : MonoBehaviour
     bool shake = false;
 
     //we will set number of enemy in every level
-    [SerializeField] private int numberOfEnemy=10; // number of enemy in the pool
+    [SerializeField] private int numberOfEnemy; // number of enemy in the pool
+    [SerializeField] private int amounOfEnemyOneShot;
     
     [SerializeField] private float enemyLaunchStartTime = 1f;
     [SerializeField] private float enemySpawnRepeatRate = 1f;
@@ -22,6 +23,7 @@ public class EnemyHouseController : MonoBehaviour
     int index = 0;  // index of enemy in the pool
     public GameObject enemyPool; // object pool
     public GameObject burstEffect;
+    public GameObject smokeEffect;
     private GameObject enemy;
 
 
@@ -79,14 +81,21 @@ public class EnemyHouseController : MonoBehaviour
 
 
     void LaunchEnemy()
-    { 
-
-        if (index < numberOfEnemy)
+    {
+        for (int i = 0; i < amounOfEnemyOneShot; i++)
         {
-            enemy = enemyPool.transform.GetChild(index).gameObject;
-            enemy.transform.position = new Vector3(transform.position.x, 0.6f, transform.position.z - 0.5f);
-            enemy.SetActive(true);
-            index++;
+            if (index < numberOfEnemy)
+            {
+            
+                enemy = enemyPool.transform.GetChild(index).gameObject;
+                enemy.transform.position = new Vector3(transform.position.x -0.5f + i*0.3f , 0.6f, transform.position.z - 0.5f);
+                enemy.SetActive(true);
+                index++;
+            }
+            else
+            {
+                index = 0;
+            }
         }        
     }
 
@@ -103,6 +112,7 @@ public class EnemyHouseController : MonoBehaviour
 
         if (enemyHouseHealth <=0)
         {
+            Destroy(Instantiate(smokeEffect, transform.position, Quaternion.identity), 2f);
             YouWon();
         }
     }
