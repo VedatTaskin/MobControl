@@ -17,8 +17,7 @@ public class StickmanNavmeshControl : MonoBehaviour
         if (target != null)
         {
             navMeshAgent.SetDestination(target.transform.position);
-        }
-        
+        }        
     }
 
 

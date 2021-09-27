@@ -154,7 +154,7 @@ public class CannonControl : MonoBehaviour
     }
 
 
-    //To launch a big man, waiting until player release finger
+    //To launch a big man, waiting until player releases finger
     IEnumerator LaunchBigMan()
     {
         yield return new WaitUntil(() => onClick == false);

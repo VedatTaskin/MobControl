@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
 
     [Header("GamePlay")]
     [SerializeField] GameObject gamePlayMenu;
+    [SerializeField] GameObject touchWarning;
     [SerializeField] GameObject releaseWarning;
     [SerializeField] Slider slider;
     [SerializeField] Image fill;
@@ -25,6 +26,18 @@ public class UIController : MonoBehaviour
 
     [Header("LoseMenu")]
     [SerializeField] GameObject loseMenu;
+
+
+    //first tap of the player observing
+    private void OnEnable()
+    {
+        CannonControl.onFirstTouch += GameStarted;
+    }
+    private void OnDisable()
+    {
+        CannonControl.onFirstTouch -= GameStarted;
+    }
+
 
     private void Awake()
     {
@@ -83,5 +96,10 @@ public class UIController : MonoBehaviour
             releaseWarning.SetActive(false);
             releaseWarning.transform.DOScale(Vector3.one * 0.2f, 0.1f);
         }
+    }
+
+    void GameStarted(bool isGameStarted)
+    {
+        touchWarning.gameObject.SetActive(false);
     }
 }
