@@ -11,8 +11,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene().buildIndex;
-        UpdateLevelText();
-       
+        UpdateLevelText();       
     }
 
     void UpdateLevelText()
@@ -23,7 +22,6 @@ public class LevelManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(currentScene);
-        Debug.Log("Restart");
     }
 
 
@@ -31,7 +29,6 @@ public class LevelManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(currentScene);
-        Debug.Log("NextLevel");
     }
 
 
