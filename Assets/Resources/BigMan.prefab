@@ -513,12 +513,12 @@ GameObject:
   - component: {fileID: 1635970805753448290}
   - component: {fileID: 1511829202}
   m_Layer: 0
-  m_Name: BigMan
+  m_Name: Bigman
   m_TagString: Stickman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2644777563166245546
 Transform:
   m_ObjectHideFlags: 0
@@ -631,7 +631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce2cbd450771934982bc482ea8391d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 4
+  splashEffect: {fileID: 7461113204585705355, guid: af5150e4e43993e419c9f59014bcff8b,
+    type: 3}
+  redSplashEffect: {fileID: 7461113204585705355, guid: 0977011245b7eee4c9aaa4cb13d2f2d9,
+    type: 3}
 --- !u!114 &1511829202
 MonoBehaviour:
   m_ObjectHideFlags: 0

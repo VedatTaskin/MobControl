@@ -6,6 +6,7 @@ public class PoolManager : MonoBehaviour
 {
     [SerializeField] private int count = 10;
     [SerializeField] private string name = "x";
+
     void Awake()
     {
         for (int i = 0; i < count; i++)

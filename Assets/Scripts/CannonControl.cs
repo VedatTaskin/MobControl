@@ -35,11 +35,13 @@ public class CannonControl : MonoBehaviour
     private GameObject bigman;
     int indexOfBigman = 0; // index of bigman in the pool
     int amountOfBigman = 0; // amount of bigman int the pool
+    bool isBigmanCRActive;
 
     private void Start()
     {
         amountOfStickman = stickmanPool.transform.childCount;
-        InvokeRepeating("LaunchStickman", 0.5f, stickmanLaunchInterval);
+        amountOfBigman = bigmanPool.transform.childCount;
+        InvokeRepeating("LaunchStickman", 0.5f, stickmanLaunchInterval);        
     }
 
     private void Update()
@@ -140,15 +142,20 @@ public class CannonControl : MonoBehaviour
         if (value == 0)
         {
             waitForReleaseBigMan = true;
-            StartCoroutine("LaunchBigMan");
-            UIController.Instance.SetCannonSlider(1);            
+
+            //to prevent the spawn of many Bigmans
+            if (!isBigmanCRActive)
+            {
+                StartCoroutine("LaunchBigMan");
+                UIController.Instance.SetCannonSlider(1);
+            }
+                       
         }
 
         if (!waitForReleaseBigMan)
         {
             float sliderValue = (float) value / bigManComingAmount;
-            UIController.Instance.SetCannonSlider(sliderValue);
-            //print(sliderValue);
+            UIController.Instance.SetCannonSlider(sliderValue);            
         }
 
     }
@@ -157,12 +164,14 @@ public class CannonControl : MonoBehaviour
     //To launch a big man, waiting until player releases finger
     IEnumerator LaunchBigMan()
     {
+        isBigmanCRActive = true;
         yield return new WaitUntil(() => onClick == false);
 
         bigman = bigmanPool.transform.GetChild(indexOfBigman).gameObject;
         bigman.transform.position = new Vector3(transform.position.x, 0.6f, transform.position.z + 0.5f);
         bigman.SetActive(true);
         indexOfBigman++;
+
         if (indexOfBigman > amountOfBigman)
         {
             indexOfBigman = 0;
@@ -171,6 +180,7 @@ public class CannonControl : MonoBehaviour
         waitForReleaseBigMan = false;
         stickmanCounterForBigMan = 0;
         UIController.Instance.SetCannonSlider(0);
+        isBigmanCRActive = false;
     }
 
 

@@ -632,6 +632,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  splashEffect: {fileID: 7461113204585705355, guid: 48e39a569efa3014dbbea50929f53229,
+    type: 3}
+  redSplashEffect: {fileID: 7461113204585705355, guid: 0977011245b7eee4c9aaa4cb13d2f2d9,
+    type: 3}
 --- !u!114 &1511829202
 MonoBehaviour:
   m_ObjectHideFlags: 0

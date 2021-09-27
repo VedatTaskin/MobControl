@@ -1259,7 +1259,6 @@ Transform:
   - {fileID: 321870649}
   - {fileID: 844107492}
   - {fileID: 1517085831}
-  - {fileID: 1039095641}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2185,10 +2184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defa4f813eae4804dab6ab4cfe2267c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfEnemy: 30
+  numberOfEnemy: 20
   enemyLaunchStartTime: 1
   enemySpawnRepeatRate: 0.5
-  enemyHouseHealth: 30
+  enemyHouseHealth: 20
   enemyPool: {fileID: 720997986}
   burstEffect: {fileID: 1639681642}
 --- !u!1 &661360582
@@ -3159,51 +3158,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996886222}
   m_CullTransparentMesh: 0
---- !u!1 &1039095640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1039095641}
-  - component: {fileID: 1039095642}
-  m_Layer: 0
-  m_Name: SplashPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1039095641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039095640}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 320931072}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1039095642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1039095640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 176e6e00f249aca4db451f9f21e1583d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  count: 10
-  name: SplashEffect
 --- !u!1 &1060924923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3978,7 +3932,7 @@ GameObject:
   - component: {fileID: 1517085831}
   - component: {fileID: 1517085832}
   m_Layer: 0
-  m_Name: BigManPool
+  m_Name: BigmanPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4010,7 +3964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 176e6e00f249aca4db451f9f21e1583d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 10
+  count: 20
   name: Bigman
 --- !u!1 &1551114758
 GameObject:
@@ -6421,75 +6375,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &1078649661775949048
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.535
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.37
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2644777563166245546, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3458750781749123088, guid: 994f07e9a2e5cdf45971a5b188653c25,
-        type: 3}
-      propertyPath: m_Name
-      value: Stickman
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 994f07e9a2e5cdf45971a5b188653c25, type: 3}
 --- !u!4 &3418614552596558023
 Transform:
   m_ObjectHideFlags: 0

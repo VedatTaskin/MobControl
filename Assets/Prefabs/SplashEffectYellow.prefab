@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 7461113204585705355}
   - component: {fileID: 8170739905956010718}
   m_Layer: 0
-  m_Name: SplashEffect
+  m_Name: SplashEffectYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &582277534072923216
 Transform:
   m_ObjectHideFlags: 0
@@ -4767,7 +4767,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 663834164c6a04740aaa1b778249ce7e, type: 2}
+  - {fileID: 2100000, guid: 2ef930767fcc9bb46a83875c23ca7384, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
