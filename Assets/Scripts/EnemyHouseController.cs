@@ -21,6 +21,7 @@ public class EnemyHouseController : MonoBehaviour
 
     int index = 0;  // index of enemy in the pool
     public GameObject enemyPool; // object pool
+    public GameObject burstEffect;
     private GameObject enemy;
 
 
@@ -61,6 +62,11 @@ public class EnemyHouseController : MonoBehaviour
         if (!shake)
         {
             transform.DOShakeScale(effectDuration, Vector3.one * shakeStrength, shakeVibrato, shakeRandomness);
+            if (burstEffect.activeInHierarchy)
+            {
+                burstEffect.SetActive(false);
+            }
+            burstEffect.SetActive(true);            
             shake = true;
         }      
     }
