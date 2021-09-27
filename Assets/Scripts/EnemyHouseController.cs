@@ -14,11 +14,12 @@ public class EnemyHouseController : MonoBehaviour
 
     //we will set number of enemy in every level
     [SerializeField] private int numberOfEnemy=10; // number of enemy in the pool
-    int index = 0;  // index of stickman in the pool
+    
     [SerializeField] private float enemyLaunchStartTime = 1f;
     [SerializeField] private float enemySpawnRepeatRate = 1f;
     [SerializeField] private int enemyHouseHealth = 20;
-    
+
+    int index = 0;  // index of enemy in the pool
     public GameObject enemyPool; // object pool
     private GameObject enemy;
 
@@ -48,7 +49,7 @@ public class EnemyHouseController : MonoBehaviour
             shake = false;
             StartCoroutine("Shake");
             StickmanCrashed(other.gameObject);
-            SetHouseHealth();
+            SetHouseHealth(other.gameObject.GetComponent<StickmanHealthControl>().health);
         }
     }
 
@@ -84,13 +85,13 @@ public class EnemyHouseController : MonoBehaviour
     }
 
     void StickmanCrashed(GameObject other)
-    {
-        other.gameObject.SetActive(false);        
+    {        
+        other.gameObject.SetActive(false);
     }
 
-    void SetHouseHealth()
+    void SetHouseHealth(int damage)
     {
-        enemyHouseHealth--;
+        enemyHouseHealth-=damage;
         
         UIController.Instance.SetEnemyHouseHealth(enemyHouseHealth);
 

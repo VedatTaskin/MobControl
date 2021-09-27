@@ -5,33 +5,40 @@ using System;
 
 public class CannonControl : MonoBehaviour
 {
+    
+    //To control the first touch of player
+    public static event Action<bool> onFirstTouch;
 
-    [SerializeField] private float maxSwerveAmount = 0.3f;   // to limit the canon movement speed; 
-    [SerializeField] private float limits = 3f; // right and left limits of our platform
-    [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis
-    [SerializeField] private float stickmanLaunchInterval = 0.5f; 
-    [SerializeField] int bigManComingAmount = 10;   //  how many stickmans to throw and the big man will come out
-
-                                                    
+    //Variables
     private float lastFrameFingerPosition;
     private float deltaMovement;  // movement amount in X axis
     private bool onClick = false;  // control screen touch
     private bool waitForReleaseBigMan = false;
     [HideInInspector] public bool firstTouch = false;
 
-    //To control the first touch of player
-    public static event Action<bool> onFirstTouch;
-    
+    [Header("Swerve Features")]
+    [SerializeField] private float maxSwerveAmount = 0.3f;   // to limit the canon movement speed; 
+    [SerializeField] private float limits = 3f; // right and left limits of our platform
+    [SerializeField] private float swerveSpeed = 0.3f; // speed of cannon in X axis
+        
+    [Header("Stickman Features")]
     public GameObject stickmanPool; // object pool
-    private GameObject stickman;
-    
+    [SerializeField] private float stickmanLaunchInterval = 0.5f;
+    private GameObject stickman;    
     int indexOfStickman = 0;  // index of stickman in the pool
-    int numberOfStickman = 0; // number of stick man int the pool
+    int amountOfStickman = 0; // number of stick man int the pool
     int stickmanCounterForBigMan = 0; // stickman counter for the big man
+
+    [Header("Bigman Features")]
+    public GameObject bigmanPool; // object pool
+    [SerializeField] int bigManComingAmount = 10;   //  how many stickmans to throw and the big man will come out
+    private GameObject bigman;
+    int indexOfBigman = 0; // index of bigman in the pool
+    int amountOfBigman = 0; // amount of bigman int the pool
 
     private void Start()
     {
-        numberOfStickman = stickmanPool.transform.childCount;
+        amountOfStickman = stickmanPool.transform.childCount;
         InvokeRepeating("LaunchStickman", 0.5f, stickmanLaunchInterval);
     }
 
@@ -106,7 +113,7 @@ public class CannonControl : MonoBehaviour
             stickman.transform.position = new Vector3(transform.position.x, 0.6f , transform.position.z +0.5f);
             stickman.SetActive(true);
             indexOfStickman++;
-            if (indexOfStickman > numberOfStickman)
+            if (indexOfStickman > amountOfStickman)
             {
                 indexOfStickman = 0;
             }
@@ -151,7 +158,16 @@ public class CannonControl : MonoBehaviour
     IEnumerator LaunchBigMan()
     {
         yield return new WaitUntil(() => onClick == false);
-        print("big man launched");
+
+        bigman = bigmanPool.transform.GetChild(indexOfBigman).gameObject;
+        bigman.transform.position = new Vector3(transform.position.x, 0.6f, transform.position.z + 0.5f);
+        bigman.SetActive(true);
+        indexOfBigman++;
+        if (indexOfBigman > amountOfBigman)
+        {
+            indexOfBigman = 0;
+        }
+
         waitForReleaseBigMan = false;
         stickmanCounterForBigMan = 0;
         UIController.Instance.SetCannonSlider(0);

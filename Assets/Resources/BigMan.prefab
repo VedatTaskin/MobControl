@@ -514,11 +514,11 @@ GameObject:
   - component: {fileID: 1511829202}
   m_Layer: 0
   m_Name: BigMan
-  m_TagString: BigMan
+  m_TagString: Stickman
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2644777563166245546
 Transform:
   m_ObjectHideFlags: 0
@@ -564,8 +564,8 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: a94bbfff4f10c7541bb5ba5a029c0a68, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 3
+  m_Radius: 0.58
+  m_Height: 2.03
   m_Direction: 1
   m_Center: {x: 0, y: 1.55, z: 0}
 --- !u!54 &1068932292614758235
@@ -618,8 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49b762cc06a280840af66f5bde373b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchAmount: 2
-  speed: 1
+  speed: 60
 --- !u!114 &1635970805753448290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce2cbd450771934982bc482ea8391d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 10
 --- !u!114 &1511829202
 MonoBehaviour:
   m_ObjectHideFlags: 0

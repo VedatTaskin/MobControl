@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StickmanHealthControl : MonoBehaviour
 {
-    [SerializeField] private int health = 2; // one enemy has 1, one stickman has 2 health.
+    public int health = 2; // one enemy has 1, one stickman has 2 health, one bigman has 10 health
 
     private void OnCollisionEnter(Collision collision)
     {
