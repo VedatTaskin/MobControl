@@ -21,9 +21,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _BottomAlpha: 0.671
+    - _BottomAlpha: 0.838
     - _Origin: 0
-    - _Spread: 2.26
-    - _TopAlpha: 0.067
+    - _Spread: 4.4
+    - _TopAlpha: 0.03
     m_Colors:
     - _Color: {r: 0.0235849, g: 0.14580017, b: 1, a: 0}
