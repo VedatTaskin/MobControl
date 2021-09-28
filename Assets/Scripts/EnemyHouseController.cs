@@ -79,7 +79,6 @@ public class EnemyHouseController : MonoBehaviour
         InvokeRepeating("LaunchEnemy", enemyLaunchStartTime, enemySpawnRepeatRate);
     }
 
-
     void LaunchEnemy()
     {
         for (int i = 0; i < amounOfEnemyOneShot; i++)
@@ -120,7 +119,7 @@ public class EnemyHouseController : MonoBehaviour
     void YouWon()
     {
         UIController.Instance.WinMenu();
-        transform.gameObject.SetActive(false);
+        transform.gameObject.SetActive(false);        
     }
 }
 

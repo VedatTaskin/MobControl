@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         currentScene = SceneManager.GetActiveScene().buildIndex;
         UpdateLevelText();       
     }

@@ -2102,7 +2102,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9438
+  m_Name: pb_Mesh16470
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2360,7 +2360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 412232431}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.97, y: 0.5, z: 2.97}
+  m_LocalPosition: {x: 2.02, y: 0.5, z: 2.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 300003807}
@@ -2380,7 +2380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba77a7ae33ac3084d9e82bdf41592b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplierNumber: 2
+  multiplierNumber: 3
+  move: 1
   multiplyText: {fileID: 1958183152}
 --- !u!65 &412232434
 BoxCollider:
@@ -2393,7 +2394,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.39, y: 1, z: 0.34}
+  m_Size: {x: 1.39, y: 1, z: 0}
   m_Center: {x: -0.61, y: 0.5, z: -0.21}
 --- !u!95 &412232435
 Animator:
@@ -2761,7 +2762,7 @@ MonoBehaviour:
   numberOfEnemy: 20
   amounOfEnemyOneShot: 5
   enemyLaunchStartTime: 1
-  enemySpawnRepeatRate: 1
+  enemySpawnRepeatRate: 3
   enemyHouseHealth: 20
   enemyPool: {fileID: 720997986}
   burstEffect: {fileID: 1639681642}
@@ -5812,7 +5813,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-5152
+  m_Name: pb_Mesh16914
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
