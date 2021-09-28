@@ -127,7 +127,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16844
+  m_Name: pb_Mesh16900
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1707,7 +1707,7 @@ MonoBehaviour:
   stickmanPool: {fileID: 844107491}
   stickmanLaunchInterval: 0.5
   bigmanPool: {fileID: 1517085830}
-  bigManComingAmount: 5
+  bigManComingAmount: 8
 --- !u!1 &337907860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2394,8 +2394,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.39, y: 1, z: 0}
-  m_Center: {x: -0.61, y: 0.5, z: -0.21}
+  m_Size: {x: 1.63, y: 1, z: 0}
+  m_Center: {x: -0.61, y: 0.5, z: -0.3}
 --- !u!95 &412232435
 Animator:
   serializedVersion: 3
@@ -2759,11 +2759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: defa4f813eae4804dab6ab4cfe2267c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfEnemy: 20
   amounOfEnemyOneShot: 5
   enemyLaunchStartTime: 1
-  enemySpawnRepeatRate: 3
-  enemyHouseHealth: 20
+  enemySpawnRepeatRate: 1.5
+  enemyHouseHealth: 30
   enemyPool: {fileID: 720997986}
   burstEffect: {fileID: 1639681642}
   smokeEffect: {fileID: 1292372385266430323, guid: dcce8d56273be9f45938fc6bc2411c7f,
@@ -4676,7 +4675,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16492
+  m_Name: pb_Mesh16516
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6366,7 +6365,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16410
+  m_Name: pb_Mesh16414
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

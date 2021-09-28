@@ -11,9 +11,8 @@ public class EnemyHouseController : MonoBehaviour
     private int shakeVibrato = 1;
     private float shakeRandomness = 10;
     bool shake = false;
-
-    //we will set number of enemy in every level
-    [SerializeField] private int numberOfEnemy; // number of enemy in the pool
+    
+ 
     [SerializeField] private int amounOfEnemyOneShot;
     
     [SerializeField] private float enemyLaunchStartTime = 1f;
@@ -21,10 +20,12 @@ public class EnemyHouseController : MonoBehaviour
     [SerializeField] private int enemyHouseHealth = 20;
 
     int index = 0;  // index of enemy in the pool
+    int numberOfEnemy; // number of enemy in the pool
     public GameObject enemyPool; // object pool
     public GameObject burstEffect;
     public GameObject smokeEffect;
     private GameObject enemy;
+    private GameObject[] enemies; 
 
 
     //first tap of the player observing
@@ -36,7 +37,6 @@ public class EnemyHouseController : MonoBehaviour
     {
         CannonControl.onFirstTouch -= GameStarted;
     }
-
 
     private void Start()
     {        
@@ -119,7 +119,15 @@ public class EnemyHouseController : MonoBehaviour
     void YouWon()
     {
         UIController.Instance.WinMenu();
-        transform.gameObject.SetActive(false);        
+        CancelInvoke();
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            enemy.SetActive(false);
+        }              
+
+        transform.gameObject.SetActive(false);
+        
     }
 }
 

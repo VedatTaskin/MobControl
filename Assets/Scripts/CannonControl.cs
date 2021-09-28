@@ -41,7 +41,7 @@ public class CannonControl : MonoBehaviour
     {
         amountOfStickman = stickmanPool.transform.childCount;
         amountOfBigman = bigmanPool.transform.childCount;
-        InvokeRepeating("LaunchStickman", 0.5f, stickmanLaunchInterval);        
+        InvokeRepeating("LaunchStickman", 0.1f, stickmanLaunchInterval);        
     }
 
     private void Update()
@@ -188,6 +188,8 @@ public class CannonControl : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             UIController.Instance.LoseMenu();
+            CancelInvoke();
+            transform.gameObject.SetActive(false);
         }
     }
 

@@ -31,10 +31,11 @@ public class MultiplyPoint : MonoBehaviour
             for (int i = 0; i < multiplierNumber-1; i++)
             {
                 index++;
-                Vector3 newPos = new Vector3(other.transform.position.x + 0.4f * index, other.transform.position.y, other.transform.position.z);
+                Vector3 newPos = new Vector3(other.transform.position.x + 0.3f * index, other.transform.position.y, other.transform.position.z);
                 Instantiate(other.gameObject, newPos,Quaternion.identity);
                 
-            }            
+            }
+            other.gameObject.name = "You Passed";
         }
     }
 

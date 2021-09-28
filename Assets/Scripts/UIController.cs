@@ -54,7 +54,7 @@ public class UIController : MonoBehaviour
         loseMenu.SetActive(false);
         touchWarning.gameObject.SetActive(true);
         totalScore = PlayerPrefs.GetInt("Score");  // taking score info
-        gamePlayScoreText.text = levelScore.ToString();
+        gamePlayScoreText.text = levelScore.ToString();        
     }
 
     public void SetLevelScore()
@@ -85,12 +85,14 @@ public class UIController : MonoBehaviour
     }
 
     public void WinMenu()
-    {
+    { 
+
         gamePlayMenu.SetActive(false);
         winMenu.SetActive(true);
         totalScore += levelScore;
         winMenuScoreText.text = totalScore.ToString();
         PlayerPrefs.SetInt("Score", totalScore); // saving score info
+        
     }
 
     public void LoseMenu()
